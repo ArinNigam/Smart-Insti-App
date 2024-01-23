@@ -20,7 +20,7 @@ app.use(cookieParser());
 Connection();
 
 app.use(authResource);
-app.use(otpResource);
+app.use("/signin",otpResource);
 app.use("/", testResource);
 
 export default app;
