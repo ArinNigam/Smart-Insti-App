@@ -77,7 +77,7 @@ final GoRouter routes = GoRouter(
           ],
         ),
       ],
-    )
+    ),
   ],
 );
 
