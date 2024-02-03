@@ -56,7 +56,6 @@ authRouter.post("/signin", async (req, res) => {
 
 authRouter.post('/login', async (req, res) => {
   const { email, userType } = req.body;
-  const token = jwt.sign({ email,userType }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
   let userCollection;
   let existingUser;
   
@@ -66,9 +65,6 @@ authRouter.post('/login', async (req, res) => {
       break;
     case 'faculty':
       userCollection = Faculty;
-      break;
-    case 'admin':
-      userCollection = Admin;
       break;
     default:
       return res.status(400).send({ error: errorMessages.invalidUserType });

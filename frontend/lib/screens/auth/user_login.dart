@@ -12,6 +12,7 @@ class UserLogin extends StatefulWidget {
 
 class _UserLoginState extends State<UserLogin> {
   bool showOTPFields = false;
+  String dropdownValue = 'student';
   final emailRegex = RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+');
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -95,6 +96,33 @@ class _UserLoginState extends State<UserLogin> {
                     ),
                   ),
                   SizedBox(height: 16.0),
+                  Container(
+                    width: 200,
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      value: dropdownValue,
+                      icon: const Icon(Icons.arrow_downward),
+                      iconSize: 24,
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.teal),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.tealAccent,
+                      ),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                      },
+                      items: <String>['student', 'faculty']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       if (emailRegex.hasMatch(emailController.text)) {
@@ -137,9 +165,13 @@ class _UserLoginState extends State<UserLogin> {
                             otpController3.text +
                             otpController4.text;
                         final isVerified = await authService.verifyOTP(
-                            emailController.text, otp);
+                            emailController.text, otp, dropdownValue);
 
                         if (isVerified) {
+                          authService.loginUser(
+                              context: context,
+                              email: emailController.text,
+                              userType: dropdownValue);
                           context.go('/admin_home');
                         } else {
                           showSnackBar(
