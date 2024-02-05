@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
-
 import '../../services/auth/auth_service.dart';
 
 class AdminLogin extends StatefulWidget {
@@ -18,7 +16,6 @@ class _AdminLoginState extends State<AdminLogin> {
     final AuthService authService = AuthService();
     final TextEditingController _emailController = TextEditingController();
     final TextEditingController _passwordController = TextEditingController();
-    String message = '';
 
     @override
     void dispose() {
