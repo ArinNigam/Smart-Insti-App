@@ -22,15 +22,9 @@ export const otpVerfied = "OTP verified successfully";
 export const otpSent = "OTP sent successfully";
 
 // Auth Middleware
-export const noAuthToken = 'No auth token, access denied';
-export const invalidAuthToken = 'Invalid token';
-export const tokenVerificationFailed = 'Token verification failed, authorization denied.';
-export const invalidUserType = 'Invalid user type';
-export const tokenUpdateError= 'Error updating token';
-
-// Resources
-export const studentNotFound = 'Student not found';
-export const skillNotFound = 'Skill not found';
-export const achievementNotFound = 'Achievement not found';
-export const facultyNotFound = 'Faculty not found';
-export const courseNotFound = 'Course not found';
+export const noAuthToken = "No auth token, access denied";
+export const invalidAuthToken = "Invalid token";
+export const tokenVerificationFailed =
+  "Token verification failed, authorization denied.";
+export const invalidUserType = "Invalid user type";
+export const tokenUpdateError = "Error updating token";
