@@ -41,14 +41,12 @@ class RoomState {
 
 class RoomProvider extends StateNotifier<RoomState> {
   RoomProvider()
-      : super(
-          RoomState(
-            roomList: DummyRooms.rooms,
-            roomTiles: [],
-            searchRoomController: TextEditingController(),
-            roomNameController: TextEditingController(),
-          ),
-        );
+      : super(RoomState(
+          roomList: DummyRooms.rooms,
+          roomTiles: [],
+          searchRoomController: TextEditingController(),
+          roomNameController: TextEditingController(),
+        ));
 
   final Logger _logger = Logger();
 
@@ -70,16 +68,6 @@ class RoomProvider extends StateNotifier<RoomState> {
     } else {
       _logger.e("No file picked");
     }
-  }
-
-  int getVacantCount() {
-    int vacantCount = 0;
-    for (Room room in state.roomList) {
-      if (room.vacant) {
-        vacantCount++;
-      }
-    }
-    return vacantCount;
   }
 
   void addRoom() {
@@ -131,9 +119,9 @@ class RoomProvider extends StateNotifier<RoomState> {
                     )
                   ],
                 ),
+                      ),
+                    ),
               ),
-            ),
-          ),
           icon: Icons.add,
           primaryColor: Colors.grey.shade200,
           secondaryColor: Colors.grey.shade300,
